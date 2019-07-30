@@ -1,6 +1,6 @@
-use std::net::TcpStream;
-use std::io::Error;
 use std::collections::HashMap as Map;
+use std::io::Error;
+use std::net::TcpStream;
 
 
 type ReqHandler = fn(TcpStream) -> Result<(), Error>;

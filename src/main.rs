@@ -1,13 +1,13 @@
-use std::sync::Arc;
-use std::thread;
-use std::time::Duration;
-use std::net::TcpListener;
-use std::net::TcpStream;
+use httpserv::{Router, ThreadPool, match_query};
+use std::fs;
 use std::io::Error;
 use std::io::Read;
 use std::io::Write;
-use std::fs;
-use httpserv::{Router, ThreadPool, match_query};
+use std::net::TcpListener;
+use std::net::TcpStream;
+use std::sync::Arc;
+use std::thread;
+use std::time::Duration;
 
 const LISTEN_ADDR: &'static str = "0.0.0.0:7878";
 
@@ -33,7 +33,8 @@ fn main() {
 }
 
 fn handle_connection(mut stream: TcpStream, router: Arc<Router>)
-        -> Result<(), Error> {
+    -> Result<(), Error>
+{
 
     let mut buffer = [0; 2048];
 
